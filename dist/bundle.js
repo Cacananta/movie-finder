@@ -14213,6 +14213,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _MovieSearchActions = __webpack_require__(75);
 
+var _reactRouterDom = __webpack_require__(272);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14244,7 +14246,7 @@ var MovieDetailContainer = function (_React$Component) {
           _react2.default.createElement(
             'h1',
             null,
-            'Movie Detail'
+            'Movie Finder'
           )
         ),
         _react2.default.createElement(
@@ -14255,11 +14257,107 @@ var MovieDetailContainer = function (_React$Component) {
             { className: 'row' },
             _react2.default.createElement(
               'div',
-              { className: 'col' },
+              { className: 'col mb-4' },
               _react2.default.createElement(
-                'h1',
-                { className: 'text-center' },
-                movieList.movieDetails.title
+                _reactRouterDom.Link,
+                { to: '/' },
+                'Go Back'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-4' },
+              _react2.default.createElement('img', { className: 'text-center img-fluid max-width: 100% height: auto rounded mx-auto d-block', src: movieList.movieDetails.poster, alt: movieList.movieDetails.title })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'col-lg-8' },
+              _react2.default.createElement(
+                'div',
+                { className: 'card' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'card-header' },
+                  'Movie Details'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'card-block' },
+                  _react2.default.createElement(
+                    'h1',
+                    { className: 'text-center' },
+                    movieList.movieDetails.title
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'col-md-3 px-1' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'alert alert-success', role: 'alert' },
+                        'Released ',
+                        movieList.movieDetails.year
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'col-md-3 px-1' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'alert alert-success', role: 'alert' },
+                        'Length: ',
+                        movieList.movieDetails.length
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'col-md-6 px-1' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'alert alert-success', role: 'alert' },
+                        movieList.movieDetails.genre
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'card-text' },
+                    movieList.movieDetails.plot
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'card-text' },
+                    movieList.movieDetails.awards
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'card-text' },
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'IMDB rating:'
+                    ),
+                    ' ',
+                    movieList.movieDetails.imdbRating
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'card-text' },
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'Rotten Tomatoes rating:'
+                    ),
+                    ' ',
+                    movieList.movieDetails.rottenTomatoesRating
+                  )
+                )
               )
             )
           )
@@ -14272,12 +14370,6 @@ var MovieDetailContainer = function (_React$Component) {
   return MovieDetailContainer;
 }(_react2.default.Component);
 
-// title(pin): "Star Wars: Episode IV - A New Hope"
-// year(pin): "1977"
-// poster(pin): "https://images-na.ssl-images-amazon.com/images/M/MV5BZDk2NmNhZDgtZDgzZS00NTRkLWFiYjUtNGMzZTYwNTFhYjFmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
-// plot(pin): "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee, and two droids to save the galaxy from the Empire's world-destroying battle-station, while also attempting to rescue Princess Leia from the evil Darth Vader."
-// length(pin): "121 min"
-// genre(pin): "Action, Adventure, Fantasy"
 // imdbRating(pin): "8.7/10"
 // rottenTomatoesRating(pin): "93%"
 // id(pin): "tt0076759"
@@ -14388,6 +14480,7 @@ var MovieSearchContainer = function (_React$Component) {
           plot: response.Plot,
           length: response.Runtime,
           genre: response.Genre,
+          awards: response.Awards,
           imdbRating: response.Ratings[0].Value,
           rottenTomatoesRating: response.Ratings[1].Value,
           id: response.imdbID
@@ -14410,11 +14503,11 @@ var MovieSearchContainer = function (_React$Component) {
           { className: 'container' },
           _react2.default.createElement(
             'div',
-            { className: 'jumbotron' },
+            { className: 'jumbotron bg-dark' },
             _react2.default.createElement(
               'h1',
               { className: 'text-center' },
-              'Movie Finder'
+              'Simple Movie Finder App'
             )
           ),
           _react2.default.createElement(
@@ -14442,51 +14535,51 @@ var MovieSearchContainer = function (_React$Component) {
           movieList && movieList.map(function (movie) {
             return _react2.default.createElement(
               'div',
-              { key: movie.imdbID, className: 'row my-2' },
+              { key: movie.imdbID, className: 'card bg-dark my-2 col-12 ' },
               _react2.default.createElement(
                 'div',
-                { className: 'card' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'div',
-                  { className: 'card-body' },
+                  { className: 'row justify-content-center' },
                   _react2.default.createElement(
                     'div',
                     { className: 'col-lg-3 float-left' },
-                    _react2.default.createElement('img', { className: 'img-fluid img-thumbnail center-block', src: movie.Poster, alt: movie.Title })
+                    _react2.default.createElement('img', { className: 'text-center img-fluid max-width: 80% height: auto rounded mx-auto p-3', src: movie.Poster, alt: movie.Title })
                   ),
                   _react2.default.createElement(
                     'div',
                     { className: 'col-lg-9 float-right' },
                     _react2.default.createElement(
                       'div',
-                      { className: 'row' },
+                      { className: 'align-self-center mt-3' },
                       _react2.default.createElement(
-                        'div',
-                        { className: 'col-md-9 align-self-center mt-4' },
-                        _react2.default.createElement(
-                          'h2',
-                          { className: 'pb-4 mb-0' },
-                          movie.Title
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-md-3 align-self-center' },
-                        _react2.default.createElement(
-                          _reactRouterDom.Link,
-                          { to: "/movie/" + movie.imdbID },
-                          _react2.default.createElement(
-                            'button',
-                            { id: movie.imdbID, name: movie.imbdID, onClick: _this3.handleDetailClick, className: 'btn btn-primary', type: 'button' },
-                            'More information'
-                          )
-                        )
+                        'h2',
+                        { className: 'pb-4 mb-0' },
+                        movie.Title
                       )
                     ),
                     _react2.default.createElement(
-                      'h6',
-                      { className: 'pb-2' },
-                      movie.Year
+                      'div',
+                      null,
+                      _react2.default.createElement(
+                        'h6',
+                        { className: 'pb-4 mb-0' },
+                        movie.Year
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'align-self-center' },
+                      _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: "/movie/" + movie.imdbID },
+                        _react2.default.createElement(
+                          'button',
+                          { id: movie.imdbID, name: movie.imbdID, onClick: _this3.handleDetailClick, className: 'btn btn-primary', type: 'button' },
+                          'More information'
+                        )
+                      )
                     )
                   )
                 )
