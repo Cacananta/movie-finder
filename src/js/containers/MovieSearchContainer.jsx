@@ -36,6 +36,7 @@ class MovieSearchContainer extends React.Component {
           plot: response.Plot,
           length: response.Runtime,
           genre: response.Genre,
+          actors: response.Actors,
           awards: response.Awards,
           imdbRating: response.Ratings[0].Value,
           rottenTomatoesRating: response.Ratings[1].Value,

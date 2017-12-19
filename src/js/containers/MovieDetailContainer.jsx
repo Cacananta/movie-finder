@@ -36,7 +36,7 @@ class MovieDetailContainer extends React.Component {
                   Movie Details
                 </div>
                 <div className="card-block">
-                  <h1 className="text-center">{movieList.movieDetails.title}</h1>
+                  <h3 className="text-center mb-2">{movieList.movieDetails.title}</h3>
                   <div className="row">
 
                     {/* ALERTS */}
@@ -61,6 +61,7 @@ class MovieDetailContainer extends React.Component {
 
                   </div>
                   <p className="card-text">{movieList.movieDetails.plot}</p>
+                  <p><strong>Starring:</strong> {movieList.movieDetails.actors}</p>
                   <p className="card-text">{movieList.movieDetails.awards}</p>
                   <p className="card-text"><strong>IMDB rating:</strong> {movieList.movieDetails.imdbRating}</p>
                   <p className="card-text"><strong>Rotten Tomatoes rating:</strong> {movieList.movieDetails.rottenTomatoesRating}</p>
