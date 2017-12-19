@@ -6,4 +6,5 @@ This React Redux application uses IMDB's API to view a list of movies based on s
 
 ```
 $ npm install
+$ npm install redux redux-promise-middleware react-redux
 ```
